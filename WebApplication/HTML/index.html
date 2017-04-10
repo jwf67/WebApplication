@@ -1,0 +1,38 @@
+<?php
+$database = mysqli_connect('localhost', 'root', 'root', testing) or die ('Could not connect to server');
+?>
+<html>
+<head>
+<style>
+.error {color: #FF0000;}
+</style>
+<title>Basic Person Database Application</title>
+<link rel="stylesheet" href="../CSS/standard.css">
+</head>
+<body>
+	<?php
+	$query = "SELECT username, password FROM users WHERE username = user";
+	mysqli_query($database, $query) or die('Error querying database.');
+
+	$result = mysqli_query($db, $query);
+	$row = mysqli_fetch_array($result);
+
+	while ($row = mysqli_fetch_array($result)) {
+	 echo $row['first_name'] . ' ' . $row['last_name'] . ': ' . $row['email'] . ' ' . $row['city'] .'<br />';
+	}
+	?>
+
+	<script src = "../JavaScript/write.js"></script>
+	<div class="main">
+		<form name="loginform" onSubmit="return login();" action="info.html" method="post">
+			<label>Username: </label>
+			<input type="text" name="user" placeholder="username"> 
+			<br>
+			<label>Password: </label>
+			<input type="password" name="password" placeholder="password">
+			<br>
+			<input type="submit" value="Login"/>
+		</form>
+	</div>
+</body>
+</html>
